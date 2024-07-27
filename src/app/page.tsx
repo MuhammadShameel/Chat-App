@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div>
-      <Button>Chat App</Button>
-    </div>
-  );
-}
+import React from "react";
+import Home from "./components/Home";
+
+const HomePage = () => {
+  return <Home />;
+};
+
+export default HomePage;
