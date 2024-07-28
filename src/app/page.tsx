@@ -1,10 +1,13 @@
-"use client";
-
 import React from "react";
-import Home from "./components/Home";
+import Layout from "./components/Layout";
+import Chat from "./components/Chat";
 
-const HomePage = () => {
-  return <Home />;
+const HomePage: React.FC = () => {
+  return (
+    <Layout>
+      <Chat />
+    </Layout>
+  );
 };
 
 export default HomePage;
