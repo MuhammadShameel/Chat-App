@@ -13,7 +13,7 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-between p-4 bg-gray-100 dark:bg-gray-900 ml-60">
+    <div className="h-screen flex flex-col justify-between p-4 bg-gray-100 dark:bg-gray-900 lg:ml-60 md:ml-60 sm:ml-60 ">
       <div className="overflow-y-auto p-4 space-y-4 mt-10">
         {/* Display messages here */}
         <div className="flex justify-start">
