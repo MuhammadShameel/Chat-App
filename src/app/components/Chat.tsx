@@ -1,31 +1,53 @@
-import React from "react";
-import { FaPaperPlane, FaVideo, FaPhone } from "react-icons/fa";
+"use client";
+import React, { useState } from "react";
+import { FiSend, FiPhoneCall, FiVideo } from "react-icons/fi";
 
 const Chat: React.FC = () => {
+  const [message, setMessage] = useState("");
+
+  const handleSendMessage = () => {
+    if (message.trim() !== "") {
+      console.log("Message sent:", message);
+      setMessage("");
+    }
+  };
+
   return (
-    // <div className="p-4 sm:ml-56">
-    <div className="flex flex-col h-full  sm:ml-64">
-      <div className="flex-grow p-4 bg-white rounded-lg shadow-md ">
-        {/* Add chat messages here */}
+    <div className="h-screen flex flex-col justify-between p-4 bg-gray-100 dark:bg-gray-900 ml-60">
+      <div className="overflow-y-auto p-4 space-y-4 mt-10">
+        {/* Display messages here */}
+        <div className="flex justify-start">
+          <div className="bg-blue-500 text-white p-2 rounded-lg">Hello!</div>
+        </div>
+        <div className="flex justify-end">
+          <div className="bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white p-2 rounded-lg">
+            Hi, how are you?
+          </div>
+        </div>
       </div>
-      <div className="flex items-center p-2 bg-gray-200 rounded-lg mt-2">
+      <div className="p-4 border-t border-gray-300 dark:border-gray-700 flex items-center">
+        <button className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+          <FiPhoneCall size={24} />
+        </button>
+        <button className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 ml-2">
+          <FiVideo size={24} />
+        </button>
         <input
           type="text"
-          className="flex-grow p-2 border rounded-lg"
+          className="flex-1 p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none ml-2"
           placeholder="Type a message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
         />
-        <button className="ml-2 p-2 text-blue-500">
-          <FaPaperPlane />
-        </button>
-        <button className="ml-2 p-2 text-green-500">
-          <FaPhone />
-        </button>
-        <button className="ml-2 p-2 text-red-500">
-          <FaVideo />
+        <button
+          className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 ml-2"
+          onClick={handleSendMessage}
+        >
+          <FiSend size={24} />
         </button>
       </div>
     </div>
-    // </div>
   );
 };
 
