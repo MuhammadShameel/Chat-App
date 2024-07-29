@@ -28,9 +28,9 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Script
-  src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"
-  strategy="afterInteractive"
-/>
+          src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
