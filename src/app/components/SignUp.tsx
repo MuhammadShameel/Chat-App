@@ -10,7 +10,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [submitDisabled, setSubmitDisabled] = useState(false);
 
@@ -32,7 +32,6 @@ const Signup = () => {
       await updateProfile(user, {
         displayName: values.name,
       });
-      // Redirect to the login page
       window.location.href = "/login";
     } catch (err: any) {
       setSubmitDisabled(false);
@@ -47,48 +46,56 @@ const Signup = () => {
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Toggle the state to show/hide the password
+    setShowPassword(!showPassword);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-4 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-8">Sign Up</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+      <div className="w-full max-w-md p-8 space-y-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white">
+          Sign Up
+        </h2>
         <form>
           <div className="mb-4">
-            <label className="block text-gray-700">Name</label>
+            <label className="block text-gray-700 dark:text-gray-300">
+              Name
+            </label>
             <input
               type="text"
               onChange={(event) =>
                 setValues({ ...values, name: event.target.value })
               }
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 mt-1 border rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Email address</label>
+            <label className="block text-gray-700 dark:text-gray-300">
+              Email address
+            </label>
             <input
               type="email"
               onChange={(event) =>
                 setValues({ ...values, email: event.target.value })
               }
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 mt-1 border rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Password</label>
+            <label className="block text-gray-700 dark:text-gray-300">
+              Password
+            </label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 onChange={(event) =>
                   setValues({ ...values, password: event.target.value })
                 }
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 mt-1 border rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
               />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-gray-700 dark:text-gray-300"
               >
                 {showPassword ? (
                   <svg
@@ -119,23 +126,21 @@ const Signup = () => {
             </div>
           </div>
           {errorMsg && (
-            <div className="mb-4 text-red-500 text-sm text-center">
-              {errorMsg}
-            </div>
+            <div className="mb-4 text-center text-red-500">{errorMsg}</div>
           )}
-          <div className="flex flex-col items-center justify-center space-y-4">
+          <div className="flex flex-col items-center space-y-4">
             <button
               type="button"
               onClick={handleSubmission}
               disabled={submitDisabled}
-              className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+              className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-700 dark:focus:bg-blue-600"
             >
               Signup
             </button>
-            <p>
+            <p className="text-gray-700 dark:text-gray-300">
               Already have an account?{" "}
-              <a href="/login" className="text-blue-500">
-                SignIn
+              <a href="/login" className="text-blue-500 dark:text-blue-300">
+                Sign In
               </a>
             </p>
           </div>
